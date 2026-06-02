@@ -16,6 +16,11 @@
         "author": "@pdfowler",
         "description": "[Feature] Added support for PTM 215Z chord actions, including top and bottom simultaneous button presses.",
         "breaking": false
+      },
+      {
+        "author": "@pdfowler",
+        "description": "[Fix] Store per-button press timestamps so rapid sequential presses do not overwrite each other before release handling.",
+        "breaking": false
       }
     ]
   }
