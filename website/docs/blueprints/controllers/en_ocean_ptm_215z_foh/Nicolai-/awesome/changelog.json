@@ -8,5 +8,15 @@
         "breaking": false
       }
     ]
+  },
+  {
+    "date": "2026.06.02",
+    "changes": [
+      {
+        "author": "@pdfowler",
+        "description": "[Feature] Added support for PTM 215Z chord actions, including top and bottom simultaneous button presses.",
+        "breaking": false
+      }
+    ]
   }
 ]
