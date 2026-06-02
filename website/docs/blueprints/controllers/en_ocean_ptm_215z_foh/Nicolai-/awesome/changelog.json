@@ -21,6 +21,11 @@
         "author": "@pdfowler",
         "description": "[Fix] Store per-button press timestamps so rapid sequential presses do not overwrite each other before release handling.",
         "breaking": false
+      },
+      {
+        "author": "@pdfowler",
+        "description": "[Fix] Ignore malformed helper keys and only persist valid press timestamps.",
+        "breaking": false
       }
     ]
   }
