@@ -453,5 +453,20 @@
         "breaking": false
       }
     ]
+  },
+  {
+    "date": "2026.06.01",
+    "changes": [
+      {
+        "author": "@pdfowler",
+        "description": "[Bug Fix] Normalized the controller device filter so Hook automations accept either a single device value or a device list.",
+        "breaking": false
+      },
+      {
+        "author": "@pdfowler",
+        "description": "[Bug Fix] Hardened brightness repeat logic against lights that report no brightness value yet.",
+        "breaking": false
+      }
+    ]
   }
 ]
