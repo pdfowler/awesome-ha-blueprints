@@ -26,6 +26,11 @@
         "author": "@pdfowler",
         "description": "[Fix] Ignore malformed helper keys and only persist valid press timestamps.",
         "breaking": false
+      },
+      {
+        "author": "@pdfowler",
+        "description": "[Fix] Switch controller automation to parallel mode so rapid button presses do not cancel each other.",
+        "breaking": false
       }
     ]
   }
