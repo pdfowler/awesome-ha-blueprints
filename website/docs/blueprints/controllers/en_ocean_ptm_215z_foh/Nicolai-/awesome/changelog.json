@@ -31,6 +31,11 @@
         "author": "@pdfowler",
         "description": "[Fix] Switch controller automation to parallel mode so rapid button presses do not cancel each other.",
         "breaking": false
+      },
+      {
+        "author": "@pdfowler",
+        "description": "[Fix] Track releases in controller state and suppress delayed long actions after a button has already been released.",
+        "breaking": false
       }
     ]
   }
