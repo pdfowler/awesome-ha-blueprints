@@ -453,7 +453,7 @@ action:
             data:
               entity_id: !input helper_last_controller_event
               value: >-
-                {%- set ns = namespace(updated=previous_events) -%}
+                {%- set ns = namespace(updated={}) -%}
                 {%- if trigger_action is string and trigger_action.startswith("press_") -%}
                   {%- set ns.updated = ns.updated | combine({trigger_action: as_timestamp(now())}) -%}
                 {%- endif -%}
@@ -472,7 +472,10 @@ action:
             data:
               entity_id: !input helper_last_controller_event
               value: >-
-                {%- set ns = namespace(updated=previous_events) -%}
+                {%- set ns = namespace(updated={}) -%}
+                {%- if expected_press_action is string and expected_press_action.startswith("press_") and previous_time > 0 -%}
+                  {%- set ns.updated = ns.updated | combine({expected_press_action: previous_time}) -%}
+                {%- endif -%}
                 {%- if trigger_action is string and trigger_action.startswith("release_") -%}
                   {%- set ns.updated = ns.updated | combine({trigger_action: as_timestamp(now())}) -%}
                 {%- endif -%}

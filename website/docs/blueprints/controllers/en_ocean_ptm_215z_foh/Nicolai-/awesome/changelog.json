@@ -36,6 +36,11 @@
         "author": "@pdfowler",
         "description": "[Fix] Track releases in controller state and suppress delayed long actions after a button has already been released.",
         "breaking": false
+      },
+      {
+        "author": "@pdfowler",
+        "description": "[Fix] Keep only the active press/release pair in controller helper state to avoid stale cross-button timestamps.",
+        "breaking": false
       }
     ]
   }
