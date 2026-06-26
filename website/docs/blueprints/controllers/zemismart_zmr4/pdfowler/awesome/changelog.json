@@ -1,0 +1,12 @@
+[
+  {
+    "date": "2026.06.26",
+    "changes": [
+      {
+        "author": "@pdfowler",
+        "description": "Initial release for Zigbee2MQTT-backed Zemismart ZMR4 support.",
+        "breaking": false
+      }
+    ]
+  }
+]

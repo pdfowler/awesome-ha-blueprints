@@ -60,6 +60,8 @@ blueprint:
             - EnOcean PTM 215Z (Friends Of Hue) (Horizontal - Top - On/Off/Dimm - Bottom - Color Up/Down)
             - EnOcean PTM 215Z (Friends Of Hue) (Vertical - Left Buttons)
             - EnOcean PTM 215Z (Friends Of Hue) (Vertical - Right Buttons)
+            - Zemismart ZMR4 wireless switch with 4 buttons
+            - Zemismart ZMR4 wireless switch with 4 buttons (Option 1)
             - IKEA E1524/E1810 TRÅDFRI Wireless 5-Button Remote
             - IKEA E1743 TRÅDFRI On/Off Switch & Dimmer
             - IKEA E1743 TRÅDFRI On/Off Switch & Dimmer (Option 1)
@@ -283,6 +285,20 @@ variables:
       brightness_up_repeat: button_top_right_long
       turn_off: button_bottom_right_short
       brightness_down_repeat: button_bottom_right_long
+    Zemismart ZMR4 wireless switch with 4 buttons:
+      turn_on: button_1_short
+      brightness_up_repeat: button_1_long
+      color_up: button_1_double
+      turn_off: button_2_short
+      brightness_down_repeat: button_2_long
+      color_down: button_2_double
+    Zemismart ZMR4 wireless switch with 4 buttons (Option 1):
+      turn_on: button_3_short
+      brightness_up_repeat: button_3_long
+      color_up: button_3_double
+      turn_off: button_4_short
+      brightness_down_repeat: button_4_long
+      color_down: button_4_double
     Aqara WXKG11LM Wireless Mini Switch:
       toggle: button_short
       color_up: button_double

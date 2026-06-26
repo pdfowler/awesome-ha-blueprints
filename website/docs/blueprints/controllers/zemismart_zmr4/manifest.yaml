@@ -1,0 +1,27 @@
+name: 'Controller - Zemismart ZMR4 wireless switch with 4 buttons'
+description: 'Controller automation for executing any kind of action triggered by the provided Zemismart ZMR4 wireless switch with 4 buttons.'
+librarians:
+  - id: 'pdfowler'
+    name: 'pdfowler'
+libraries:
+  pdfowler:
+    maintainers:
+      - id: 'pdfowler'
+        name: 'pdfowler'
+    releases:
+      awesome:
+        supported_hooks:
+          - 'light'
+    supported_integrations:
+      - 'Zigbee2MQTT'
+manufacturer: 'Zemismart'
+model: 'ZMR4'
+model_name: 'Zemismart ZMR4 wireless switch with 4 buttons'
+tags:
+  - 'zigbee'
+  - 'button'
+  - 'remote'
+  - '4-button'
+external_references:
+  - label: 'Zigbee2MQTT'
+    url: 'https://www.zigbee2mqtt.io/devices/ZMR4.html'

@@ -1,0 +1,328 @@
+# Blueprint metadata
+blueprint:
+  name: Controller - Zemismart ZMR4 wireless switch with 4 buttons
+  description: |
+    # Controller - Zemismart ZMR4 wireless switch with 4 buttons
+
+    ℹ️ Version 2026.06.26
+
+    Controller automation for executing any kind of action triggered by the provided Zemismart ZMR4 wireless switch with 4 buttons.
+    Supports Zigbee2MQTT.
+
+    Automations created with this blueprint can be connected with one or more [Hooks](https://yarafie.github.io/awesome-ha-blueprints/docs/blueprints/hooks) supported by this controller.
+    Hooks allow to easily create controller-based automations for interacting with media players, lights, covers and more.
+    See the list of available hooks in this controller package for additional details.
+
+    This controller expects the device to be in Zigbee2MQTT `event` operation mode.
+
+  source_url: https://github.com/pdfowler/awesome-ha-blueprints/blob/main/website/docs/blueprints/controllers/zemismart_zmr4/pdfowler/awesome/2026.06.26/zemismart_zmr4.yaml
+  domain: automation
+  homeassistant:
+    min_version: 2024.10.0
+  input:
+    controller_device:
+      name: (Required) (Zigbee2MQTT) Controller Device
+      description: The controller device to use for the automation.
+      default: ''
+      selector:
+        device:
+          filter:
+            - integration: mqtt
+              manufacturer: Tuya
+              model: Wireless switch with 4 buttons
+            - integration: mqtt
+              manufacturer: Zemismart
+              model: Wireless switch with 4 buttons
+          multiple: false
+    helper_last_controller_event:
+      name: (Required) Helper - Last Controller Event
+      description: Input Text used to store the last event fired by the controller.
+      default: ''
+      selector:
+        entity:
+          domain: input_text
+    action_button_1_short:
+      name: (Optional) Button 1 short press
+      default: []
+      selector:
+        action:
+    action_button_1_long:
+      name: (Optional) Button 1 long press
+      default: []
+      selector:
+        action:
+    action_button_1_double:
+      name: (Optional) Button 1 double press
+      default: []
+      selector:
+        action:
+    action_button_2_short:
+      name: (Optional) Button 2 short press
+      default: []
+      selector:
+        action:
+    action_button_2_long:
+      name: (Optional) Button 2 long press
+      default: []
+      selector:
+        action:
+    action_button_2_double:
+      name: (Optional) Button 2 double press
+      default: []
+      selector:
+        action:
+    action_button_3_short:
+      name: (Optional) Button 3 short press
+      default: []
+      selector:
+        action:
+    action_button_3_long:
+      name: (Optional) Button 3 long press
+      default: []
+      selector:
+        action:
+    action_button_3_double:
+      name: (Optional) Button 3 double press
+      default: []
+      selector:
+        action:
+    action_button_4_short:
+      name: (Optional) Button 4 short press
+      default: []
+      selector:
+        action:
+    action_button_4_long:
+      name: (Optional) Button 4 long press
+      default: []
+      selector:
+        action:
+    action_button_4_double:
+      name: (Optional) Button 4 double press
+      default: []
+      selector:
+        action:
+    helper_debounce_delay:
+      name: (Optional) Helper - Debounce delay
+      description: Delay used for debouncing RAW controller events.
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 1000
+          unit_of_measurement: milliseconds
+          mode: box
+          step: 10
+variables:
+  helper_last_controller_event: !input helper_last_controller_event
+  helper_debounce_delay: !input helper_debounce_delay
+  actions_mapping:
+    zigbee2mqtt:
+      button_1_short: [1_single]
+      button_1_long: [1_hold]
+      button_1_double: [1_double]
+      button_2_short: [2_single]
+      button_2_long: [2_hold]
+      button_2_double: [2_double]
+      button_3_short: [3_single]
+      button_3_long: [3_hold]
+      button_3_double: [3_double]
+      button_4_short: [4_single]
+      button_4_long: [4_hold]
+      button_4_double: [4_double]
+  button_1_short: '{{ actions_mapping["zigbee2mqtt"]["button_1_short"] }}'
+  button_1_long: '{{ actions_mapping["zigbee2mqtt"]["button_1_long"] }}'
+  button_1_double: '{{ actions_mapping["zigbee2mqtt"]["button_1_double"] }}'
+  button_2_short: '{{ actions_mapping["zigbee2mqtt"]["button_2_short"] }}'
+  button_2_long: '{{ actions_mapping["zigbee2mqtt"]["button_2_long"] }}'
+  button_2_double: '{{ actions_mapping["zigbee2mqtt"]["button_2_double"] }}'
+  button_3_short: '{{ actions_mapping["zigbee2mqtt"]["button_3_short"] }}'
+  button_3_long: '{{ actions_mapping["zigbee2mqtt"]["button_3_long"] }}'
+  button_3_double: '{{ actions_mapping["zigbee2mqtt"]["button_3_double"] }}'
+  button_4_short: '{{ actions_mapping["zigbee2mqtt"]["button_4_short"] }}'
+  button_4_long: '{{ actions_mapping["zigbee2mqtt"]["button_4_long"] }}'
+  button_4_double: '{{ actions_mapping["zigbee2mqtt"]["button_4_double"] }}'
+  controller_id: !input controller_device
+mode: restart
+max_exceeded: silent
+triggers:
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 1_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 1_hold
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 1_double
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 2_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 2_hold
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 2_double
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 3_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 3_hold
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 3_double
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 4_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 4_hold
+  - trigger: device
+    domain: mqtt
+    device_id: !input controller_device
+    type: action
+    subtype: 4_double
+conditions:
+  - condition: template
+    value_template: '{{ trigger.payload not in ["", "None", none] }}'
+actions:
+  - delay:
+      milliseconds: !input helper_debounce_delay
+  - variables:
+      trigger_action: '{{ trigger.payload }}'
+  - action: input_text.set_value
+    data:
+      entity_id: !input helper_last_controller_event
+      value: '{{ {"a":trigger_action,"t":as_timestamp(now())} | to_json }}'
+  - choose:
+      - conditions: '{{ trigger_action | string in button_1_short }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_1_short
+          - choose:
+              - conditions: []
+                sequence: !input action_button_1_short
+      - conditions: '{{ trigger_action | string in button_1_long }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_1_long
+          - choose:
+              - conditions: []
+                sequence: !input action_button_1_long
+      - conditions: '{{ trigger_action | string in button_1_double }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_1_double
+          - choose:
+              - conditions: []
+                sequence: !input action_button_1_double
+      - conditions: '{{ trigger_action | string in button_2_short }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_2_short
+          - choose:
+              - conditions: []
+                sequence: !input action_button_2_short
+      - conditions: '{{ trigger_action | string in button_2_long }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_2_long
+          - choose:
+              - conditions: []
+                sequence: !input action_button_2_long
+      - conditions: '{{ trigger_action | string in button_2_double }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_2_double
+          - choose:
+              - conditions: []
+                sequence: !input action_button_2_double
+      - conditions: '{{ trigger_action | string in button_3_short }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_3_short
+          - choose:
+              - conditions: []
+                sequence: !input action_button_3_short
+      - conditions: '{{ trigger_action | string in button_3_long }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_3_long
+          - choose:
+              - conditions: []
+                sequence: !input action_button_3_long
+      - conditions: '{{ trigger_action | string in button_3_double }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_3_double
+          - choose:
+              - conditions: []
+                sequence: !input action_button_3_double
+      - conditions: '{{ trigger_action | string in button_4_short }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_4_short
+          - choose:
+              - conditions: []
+                sequence: !input action_button_4_short
+      - conditions: '{{ trigger_action | string in button_4_long }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_4_long
+          - choose:
+              - conditions: []
+                sequence: !input action_button_4_long
+      - conditions: '{{ trigger_action | string in button_4_double }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_4_double
+          - choose:
+              - conditions: []
+                sequence: !input action_button_4_double
